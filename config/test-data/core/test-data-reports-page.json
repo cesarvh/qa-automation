@@ -1,0 +1,19 @@
+{
+  "reports": {
+    "name": "Test report name",
+    "notes": "This is a test description. This report does many things such as track many items. Here are some special charactsts, too: œ∑´¥ˆ¨",
+    "filename": "testReport.jrxml",
+    "supportsNoContext": true,
+    "supportsDocList": true,
+    "supportsGroup": false,
+    "supportsSingleDoc": true,
+    "forDocTypes": [
+      {
+        "forDocType": "CollectionObject"
+      },
+      {
+        "forDocType": "UOC"
+      }
+    ]
+  }
+}

@@ -25,6 +25,7 @@ require_relative 'models/data/core/core_procedures/core_inventory_movement_data'
 require_relative 'models/data/core/core_procedures/core_use_of_collections_data'
 require_relative 'models/user_role'
 require_relative 'models/user'
+require_relative 'models/data/core/core_tools/core_reports_data.rb'
 
 require_relative 'pages/page'
 require_relative 'pages/collection_space_pages'
@@ -49,6 +50,8 @@ require_relative 'pages/core/core_procedures/core_inventory_movement_info_form'
 require_relative 'pages/core/core_procedures/core_inventory_movement_page'
 require_relative 'pages/core/core_procedures/core_use_of_collections_info_form'
 require_relative 'pages/core/core_procedures/core_use_of_collections_page'
+require_relative 'pages/core/core_tools/core_reports'
+require_relative 'pages/core/core_tools/core_tools'
 
 deployment = Config.deployment.code
 

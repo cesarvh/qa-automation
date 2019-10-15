@@ -13,10 +13,10 @@ timeout:
 deployment: core
 
 core:
-  base_url: https://core.collectionspace.org
+  base_url: https://core-qa.cspace.berkeley.edu
   admin:
-    username: admin@core.collectionspace.org
-    password: Administrator
+    username: cesarv.h@berkeley.edu
+    password: pokemon13
 
 bampfa:
   base_url: https://bampfa-qa.cspace.berkeley.edu

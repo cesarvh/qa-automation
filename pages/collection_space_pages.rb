@@ -18,6 +18,7 @@ module CollectionSpacePages
   def search_link; {:xpath => '//a[contains(.,"Search")]'} end
   def admin_link; {:xpath => '//a[contains(.,"Administration")]'} end
   def sign_out_link; {:xpath => '//a[contains(.,"Sign out")]'} end
+  def tools_link; {:xpath => '//a[contains(.,"Tools")]'} end
   def save_button; {:name => 'save'} end
   def save_only_button; {:xpath => '//button[contains(.,"Save only")]'} end
   def save_and_lock_button; {:xpath => '//button[contains(.,"Save and lock")]'} end
@@ -25,6 +26,7 @@ module CollectionSpacePages
   def revert_button; {:name => 'revert'} end
   def close_button; {:name => 'close'} end
   def create_new_button; {:name => 'create'} end
+  def run_button; {:name => 'run'} end
   def clone_button; {:name => 'clone'} end
   def header_bar; {:xpath => '//header/div'} end
   def page_h1; {:xpath => '//h1'} end
@@ -214,6 +216,12 @@ module CollectionSpacePages
     logger.info 'Clicking link to Search'
     scroll_to_top
     wait_for_element_and_click search_link
+  end
+
+  def click_tools_link
+    logger.info 'Clicking link to Tools'
+    scroll_to_top
+    wait_for_element_and_click tools_link
   end
 
   # SAVE, DELETE, REVERT, CANCEL
