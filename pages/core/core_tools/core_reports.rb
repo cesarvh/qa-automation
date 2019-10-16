@@ -37,7 +37,7 @@ class CoreReportsPage
     logger.debug("Changing the description to '#{description}'")
     wait_for_element_and_type(report_description_locator, description) if description
   end
-
+  
   # click run and cancel report
   def run_and_cancel_report(data_set)
     # report_name = get report name from the dataset

@@ -16,6 +16,7 @@ describe 'Reports' do
     @reports_page = test_run.get_page CoreReportsPage
     @search_page = test_run.get_page CoreSearchPage
     @tools_page = test_run.get_page CoreToolsPage
+    @search_results_page = test_run.get_page CoreSearchResultsPage
 
     @test_0 = {
         CoreReportsData::REPORT_NAME.name => 'Use of Collections Approval Status Report',
@@ -44,7 +45,7 @@ describe 'Reports' do
 
   after(:all) { quit_browser test_run.driver}
 
-  describe 'reports page fields' do
+  describe 'interacting with the reports page tab' do
 
     it 'should be able to change the name of the report and revert it' do
       @reports_page.click_report @test_0[CoreReportsData::REPORT_NAME.name]
@@ -106,8 +107,24 @@ describe 'Reports' do
       expect(@reports_page.enabled? @reports_page.run_button).to be true
     end
 
-    describe 'dismissing and bringing up modals' do
-      it 'should be able to bring up a modal and dismiss it in various ways' do
+    it 'should be able to filter based on a search' do
+      # @reports_page.click_search_bar
+      @tools_page.fill_filter_bar("Approval")
+      expect(@search_results_page.row_exists? "Use of Collections Approval Status Report").to be true
+      expect(@search_results_page.row_exists? "Use of Collections by Requester and/or Object Report").to be false
+    end
+
+    it 'should show all results when the clear button is clicked' do
+      @tools_page.fill_filter_bar("Approval")
+      expect(@search_results_page.row_exists? "Use of Collections Approval Status Report").to be true
+      expect(@search_results_page.row_exists? "Use of Collections by Requester and/or Object Report").to be false
+
+      @tools_page.click_clear_button
+      expect(@search_results_page.row_exists? "Use of Collections Approval Status Report").to be true
+      expect(@search_results_page.row_exists? "Use of Collections by Requester and/or Object Report").to be true
+    end
+
+    it 'should be able to bring up a modal and dismiss it in various ways' do
         @reports_page.click_report @test_0[CoreReportsData::REPORT_NAME.name]
 
         # Dismiss modal using ESC
@@ -115,7 +132,6 @@ describe 'Reports' do
         expect(@reports_page.exists? @reports_page.report_modal).to be true # for the modal to exist
         @reports_page.hit_escape
         expect(@reports_page.exists? @reports_page.report_modal).to be false
-
 
         #Dismiss modal using Cancel
         @tools_page.click_run_button
@@ -128,33 +144,8 @@ describe 'Reports' do
         expect(@reports_page.exists? @reports_page.report_modal).to be true # for the modal to exist
         @reports_page.click_close_button
         expect(@reports_page.exists? @reports_page.report_modal).to be false
-      end
-
     end
 
-
-    it 'should be able to bring up the report modal and cancel running the report' do
-      @reports_page.click_run_button
-      expect() # for the modal to exist
-      @reports_page.click_modal_cancel_button
-      expect() # for the modal to be dismissed
-      @reports_page.click_run_button
-      expect() # for the modal to exist
-      @reports_page.click_exit_button
-      expect() # for the modal to be dismissed
-      @reports_page.click_run_button
-      expect() # for the modal to exist
-      @reports_page.press_escape
-      expect() # for the modal to be dismissed
-    end
-
-    it 'should be able to filter based on a search' do
-      @reports_page.click_search_bar
-      @reports_page.fill_search_bar
-      expect() # for only things containing that prefix should exist
-      @reports_page.click_clear_button
-      expect() # for all the reports to show up again
-    end
 
   end
   # describe 'batch job fields' do

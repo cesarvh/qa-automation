@@ -39,6 +39,7 @@ class CoreSearchResultsPage
   # @param [String] unique_identifier
   # @return [boolean]
   def row_exists?(unique_identifier)
+    wait_for_results
     exists? result_row(unique_identifier)
   end
 
