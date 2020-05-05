@@ -11,6 +11,12 @@ class CoreSearchResultsPage
   def result_rows; {:xpath => '//div[@class="cspace-ui-SearchResultTable--common"]//*[@aria-label="row"]'} end
   def no_results_msg; {:xpath => '//span[text()="No records found"]'} end
   def relate_selected_button; {:xpath => '//button[contains(.,"Relate selected")]'} end
+  def search_filter_bar; {:xpath => '//div[contains(@class, "AdminSearchBar")]//input[contains(@class,"LineInput")]'} end
+
+  def fill_search_filter_bar(value)
+    wait_for_element_and_type(search_filter_bar, value)
+    sleep 1
+  end
 
   def result_row(id)
     {:xpath => "//div[@class=\"cspace-ui-SearchResultTable--common\"]//*[@aria-label=\"row\"][contains(.,\"#{id}\")]"}

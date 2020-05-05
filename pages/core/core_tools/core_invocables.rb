@@ -35,13 +35,13 @@ class CoreInvocablesPage
   end
 
   # Edit the name of the invocable
-  def edit_invocable_name(new_name)
+  def edit_invocable_name_and_save(new_name)
     logger.debug("Changing name to '#{new_name}'")
     wait_for_element_and_type(invocable_name_locator, new_name) if new_name
   end
 
   # Edit the description
-  def edit_description(description)
+  def edit_description_and_save(description)
     logger.debug("Changing the description to '#{description}'")
     wait_for_element_and_type(invocable_description_locator, description) if description
   end
